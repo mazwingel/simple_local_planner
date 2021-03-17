@@ -10,7 +10,7 @@ namespace simple_local_planner{
 
 	SimplePlannerROS::SimplePlannerROS() : costmap_ros_(NULL), tf_(NULL), initialized_(false) {}
 
-	SimplePlannerROS::SimplePlannerROS(std::string name, tf2_ros::Buffer** tf, costmap_2d::Costmap2DROS* costmap_ros)
+	SimplePlannerROS::SimplePlannerROS(std::string name, tf2_ros::Buffer* tf, costmap_2d::Costmap2DROS* costmap_ros)
          : costmap_ros_(NULL), tf_(NULL), initialized_(false)
          {
 		// initialize planner
@@ -19,7 +19,7 @@ namespace simple_local_planner{
 
 	SimplePlannerROS::~SimplePlannerROS() {}
 
-	void SimplePlannerROS::initialize(std::string name, tf2_ros::Buffer** tf, costmap_2d::Costmap2DROS* costmap_ros)
+	void SimplePlannerROS::initialize(std::string name, tf2_ros::Buffer* tf, costmap_2d::Costmap2DROS* costmap_ros)
 	{
 
 		// check if the plugin is already initialized
