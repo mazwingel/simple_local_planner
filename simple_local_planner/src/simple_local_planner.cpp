@@ -10,7 +10,7 @@ namespace simple_local_planner{
 
 	SimplePlannerROS::SimplePlannerROS() : costmap_ros_(NULL), tf_(NULL), initialized_(false) {}
 
-	SimplePlannerROS::SimplePlannerROS(std::string name, tf::TransformListener* tf, costmap_2d::Costmap2DROS* costmap_ros)
+	SimplePlannerROS::SimplePlannerROS(std::string name, tf2_ros::Buffer** tf, costmap_2d::Costmap2DROS* costmap_ros)
          : costmap_ros_(NULL), tf_(NULL), initialized_(false)
          {
 		// initialize planner
@@ -19,7 +19,7 @@ namespace simple_local_planner{
 
 	SimplePlannerROS::~SimplePlannerROS() {}
 
-	void SimplePlannerROS::initialize(std::string name, tf::TransformListener* tf, costmap_2d::Costmap2DROS* costmap_ros)
+	void SimplePlannerROS::initialize(std::string name, tf2_ros::Buffer** tf, costmap_2d::Costmap2DROS* costmap_ros)
 	{
 
 		// check if the plugin is already initialized
@@ -72,7 +72,8 @@ namespace simple_local_planner{
 		//beforee = ros::Time::now().toSec();
 
 		//open file
-		file.open("/home/adriana/adrianaTFG/simple_cs/simple_cs_10.txt", ios::out);
+		//Enable if debugging is wanted. 
+	        //file.open("/home/adriana/adrianaTFG/simple_cs/simple_cs_10.txt", ios::out);
 		// set initialized flag
 		initialized_ = true;
 
@@ -178,12 +179,12 @@ namespace simple_local_planner{
 					//average executation time (for computational cost)
 					ROS_INFO("avrg exec time: %f", average/num);
 
-					if(file.is_open()){
+					/*if(file.is_open()){
 						ROS_INFO("I'm OPEN!");
 						//file.close();
 					}else{
 						ROS_INFO("I'm NOT open!");
-					}
+					}*/
 
 					setVelZ();
 					goal_reached_ = true;
@@ -214,7 +215,7 @@ namespace simple_local_planner{
 
 		// set retrieved commands to reference variable
 		ROS_DEBUG("Retrieving velocity command: (%f, %f, %f)", cmd.linear.x, cmd.linear.y, cmd.angular.z);
-		file << cmd.linear.x << " "<< cmd.linear.y << " "<< cmd.angular.z << endl;
+		//file << cmd.linear.x << " "<< cmd.linear.y << " "<< cmd.angular.z << endl;
 		cmd_vel = cmd;  
 
 		return true;
