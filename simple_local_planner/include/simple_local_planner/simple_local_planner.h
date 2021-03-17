@@ -74,7 +74,7 @@ namespace simple_local_planner{
        * @param tf A pointer to a transform listener
        * @param costmap The cost map to use for assigning costs to trajectories
        */
-      SimplePlannerROS(std::string name, tf2::Buffer* tf,
+      SimplePlannerROS(std::string name, tf2_ros::Buffer* tf,
           costmap_2d::Costmap2DROS* costmap_ros);
 
       /**
@@ -88,7 +88,7 @@ namespace simple_local_planner{
        * @param tf A pointer to a transform listener
        * @param costmap The cost map to use for assigning costs to trajectories
        */
-      void initialize(std::string name, tf2::Buffer* tf,
+      void initialize(std::string name, tf2_ros::Buffer* tf,
           costmap_2d::Costmap2DROS* costmap_ros);
 
       /**
@@ -115,7 +115,7 @@ namespace simple_local_planner{
 
       //Pointer to external objects (do NOT delete object)
       costmap_2d::Costmap2DROS* costmap_ros_; ///<@brief pointer to costmap  
-      tf2::Buffer* tf_; ///<@brief pointer to Transform Listener 
+      tf2_ros::Buffer* tf_; ///<@brief pointer to Transform Listener 
 
 
       // Topics & Services
