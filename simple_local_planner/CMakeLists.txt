@@ -8,6 +8,11 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  nav_core
+  base_local_planner
+  tf2
+  tf2_geometry_msgs
+  tf2_ros
 )
 
 ## System dependencies are found with CMake's conventions
