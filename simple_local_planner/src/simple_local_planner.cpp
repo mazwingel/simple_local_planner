@@ -4,8 +4,8 @@
 // pluginlib macros (defines, ...)
 #include <pluginlib/class_list_macros.h>
 
-PLUGINLIB_DECLARE_CLASS(simple_local_planner, SimplePlannerROS, simple_local_planner::SimplePlannerROS, nav_core::BaseLocalPlanner)
-
+PLUGINLIB_EXPORT_CLASS(simple_local_planner::SimplePlannerROS, nav_core::BaseLocalPlanner)
+	
 namespace simple_local_planner{
 
 	SimplePlannerROS::SimplePlannerROS() : costmap_ros_(NULL), tf_(NULL), initialized_(false) {}
